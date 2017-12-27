@@ -3,6 +3,7 @@ package main
 import (
 	"io"
 	"os"
+	etcd "etcd"
 	"strings"
 	. "fmt"
 	"net/url"
@@ -43,6 +44,7 @@ func get_http_content(r *http.Request) url.Values {
 }
 
 func api_(w http.ResponseWriter, r *http.Request) {
+	panic("test api_")
 	Printf("[api] r: %+v\n", *r)
 	io.WriteString(w, Sprintf("r: %+v\n", *r))
 	// io.WriteString(w, Sprintf("Path: %+v\n", r.URL.Path))
@@ -79,6 +81,8 @@ func api_(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	etcd.Init()
+	etcd.CheckVersion()
 	Println("Api Success Start", os.Args[0])
 	http.HandleFunc("/", api_)
 	http.HandleFunc("/Test_Redirect", test_redirect)
