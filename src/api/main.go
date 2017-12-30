@@ -12,6 +12,8 @@ import (
 	"proto"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
+    grpclb "github.com/liyue201/grpc-lb"
+    registry "github.com/liyue201/grpc-lb/registry/etcd"
 	_ "github.com/golang/protobuf/proto"
 )
 
